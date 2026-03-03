@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-script: 'Oleo Script', cursive;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+    /* ZipRecruiter Theme - Enhanced */
+    --bg-body: #0a0a0a;
+    --bg-surface: #111111;
+    --bg-card: rgba(20, 20, 20, 0.6);
+    --bg-glass: rgba(255, 255, 255, 0.03);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #666666;
+    
+    --primary: #36ab62;
+    --primary-glow: rgba(54, 171, 98, 0.5);
+    --primary-dark: #248a4c;
+    
+    --accent: #ffffff;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(54, 171, 98, 0.5);
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(54, 171, 98, 0.2);
+    
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    --radius-full: 9999px;
+    
+    --header-height: 80px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(54, 171, 98, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(54, 171, 98, 0.05), transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-10 py-4 rounded-full font-bold cursor-pointer transition-all duration-300 border-none text-lg tracking-wide relative overflow-hidden z-10;
+  }
+  
+  .btn-primary {
+    @apply bg-[var(--primary)] text-white shadow-[0_0_20px_rgba(54,171,98,0.3)];
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-0.5 shadow-[0_0_30px_rgba(54,171,98,0.5)];
+  }
+  
+  .btn-secondary {
+    @apply bg-white/5 border border-[var(--border)] text-white backdrop-blur-sm;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-white/10 border-white -translate-y-0.5;
+  }
+
+  .bg-card-glass {
+    @apply bg-[var(--bg-card)] backdrop-blur-xl border border-[var(--border)] rounded-[var(--radius-lg)] p-10 transition-all duration-400 relative overflow-hidden;
+  }
+  
+  .bg-card-glass:hover {
+    @apply -translate-y-1 scale-[1.01] border-[var(--border-hover)] shadow-[var(--shadow-glow)];
+  }
+
+  .text-accent-gradient {
+    @apply bg-gradient-to-br from-[#36ab62] to-[#4ade80] bg-clip-text text-transparent inline-block;
+  }
+
+  .modern-icon {
+    @apply stroke-2 fill-none drop-shadow-[0_0_4px_rgba(54,171,98,0.5)];
+    stroke: url(#gradient-green);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: icon-pulse 3s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes icon-pulse {
+  0% { filter: drop-shadow(0 0 4px rgba(54, 171, 98, 0.4)); }
+  100% { filter: drop-shadow(0 0 10px rgba(54, 171, 98, 0.8)); }
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(54, 171, 98, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(54, 171, 98, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(54, 171, 98, 0); }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
